@@ -11,8 +11,8 @@
 	<groupId>fr.dawan</groupId>
 	<artifactId>cc_spring</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name/>
-	<description/>
+	<name>CC Spring MongoDB</name>
+	<description>Projet d’expertise évalué : « Projet JEE, Spring, MongoDB » : programmation d’un web service REST avec Spring et MongoDB</description>
 	<url/>
 	<licenses>
 		<license/>
