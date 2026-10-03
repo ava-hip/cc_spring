@@ -13,7 +13,7 @@ import lombok.Setter;
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor 
 public class Patient {
     @Id 
-    private String NumSS;
+    private String numSS;
     @Indexed 
     private String nom;
 }
