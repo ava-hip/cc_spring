@@ -23,7 +23,7 @@ import fr.dawan.cc_spring.service.ConsultationService;
 import fr.dawan.cc_spring.service.PatientService;
 
 @WebMvcTest(PatientController.class)
-public class PatientControllerTest {
+class PatientControllerTest {
     @Autowired
     private MockMvc mockMvc;
 

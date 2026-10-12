@@ -17,7 +17,7 @@ import fr.dawan.cc_spring.repository.ConsultationRepository;
 import fr.dawan.cc_spring.repository.PatientRepository;
 
 @ExtendWith(MockitoExtension.class)
-public class ConsultationServiceTest {
+class ConsultationServiceTest {
     @Mock private ConsultationRepository consultationRepository;
     @Mock private PatientRepository patientRepository;
     private ConsultationService service;

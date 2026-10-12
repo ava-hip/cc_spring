@@ -25,7 +25,7 @@ import fr.dawan.cc_spring.mapper.DtoMapper;
 import fr.dawan.cc_spring.repository.PatientRepository;
 
 @ExtendWith(MockitoExtension.class)
-public class PatientServiceTest {
+class PatientServiceTest {
     @Mock private PatientRepository repository;
     private PatientService service;
     private final Pageable pageable = PageRequest.of(0, 20);
