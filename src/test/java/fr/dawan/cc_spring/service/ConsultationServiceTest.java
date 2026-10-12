@@ -9,6 +9,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import fr.dawan.cc_spring.exception.RessourceIntrouvableException;
 import fr.dawan.cc_spring.mapper.DtoMapper;
@@ -30,7 +31,9 @@ public class ConsultationServiceTest {
     void listerParPatient_patientInconnu_leveException() {
         when(patientRepository.existsById("000")).thenReturn(false);
 
-        assertThatThrownBy(() -> service.listerParPatient("000", PageRequest.of(0, 20)))
+        Pageable pageable = PageRequest.of(0, 20);
+
+        assertThatThrownBy(() -> service.listerParPatient("000", pageable))
                 .isInstanceOf(RessourceIntrouvableException.class);
     }
 }
