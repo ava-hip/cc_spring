@@ -38,7 +38,8 @@ public class Consultation {
         this.prescriptions = new ArrayList<>(nouvelles);
     }
 
-    public void replanifier(LocalDateTime nouvelleDate) {
+    public void replanifier(LocalDateTime nouvelleDate, String nouveauMedecin) {
         this.date = nouvelleDate;
+        this.medecinMatricule = nouveauMedecin;
     }
 }

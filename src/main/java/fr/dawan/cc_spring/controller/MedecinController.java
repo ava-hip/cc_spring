@@ -12,7 +12,7 @@ import fr.dawan.cc_spring.service.MedecinService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api/medecin")
+@RequestMapping("/api/medecins")
 @RequiredArgsConstructor
 public class MedecinController {
     private final MedecinService medecinService;
