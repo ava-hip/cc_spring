@@ -1,5 +1,6 @@
 package fr.dawan.cc_spring.entity;
 
+import java.time.Clock;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +30,8 @@ public class Consultation {
         this.patientNumSS = patientNumSS;
     }
 
-    public boolean estProgrammee() {
-        return date.isAfter(LocalDateTime.now());
+    public boolean estProgrammee(Clock clock) {
+        return date.isAfter(LocalDateTime.now(clock));
     }
 
     public void remplacerPrescriptions(List<Prescription> nouvelles) {

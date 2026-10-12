@@ -1,5 +1,6 @@
 package fr.dawan.cc_spring.config;
 
+import java.time.Clock;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class DataInitializer implements CommandLineRunner {
     private final MedecinRepository medecinRepository;
     private final MedicamentRepository medicamentRepository;
     private final ConsultationRepository consultationRepository;
+    private final Clock clock;
 
     @Override
     public void run(String... args) {
@@ -40,7 +42,7 @@ public class DataInitializer implements CommandLineRunner {
             new Medicament("DOLI500", "Doliprane 500mg"),
             new Medicament("AMOX1G", "Amoxicilline 1g")));
 
-        Consultation c = new Consultation(LocalDateTime.now().plusDays(7), "M001", "185057512345678");
+        Consultation c = new Consultation(LocalDateTime.now(clock).plusDays(7), "M001", "185057512345678");
         c.remplacerPrescriptions(List.of(new Prescription("DOLI500", 3)));
         consultationRepository.save(c);
     }
