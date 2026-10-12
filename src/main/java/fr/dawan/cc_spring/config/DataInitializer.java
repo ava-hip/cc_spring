@@ -3,8 +3,10 @@ package fr.dawan.cc_spring.config;
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import fr.dawan.cc_spring.entity.Consultation;
@@ -12,10 +14,13 @@ import fr.dawan.cc_spring.entity.Medecin;
 import fr.dawan.cc_spring.entity.Medicament;
 import fr.dawan.cc_spring.entity.Patient;
 import fr.dawan.cc_spring.entity.Prescription;
+import fr.dawan.cc_spring.entity.Role;
+import fr.dawan.cc_spring.entity.Utilisateur;
 import fr.dawan.cc_spring.repository.ConsultationRepository;
 import fr.dawan.cc_spring.repository.MedecinRepository;
 import fr.dawan.cc_spring.repository.MedicamentRepository;
 import fr.dawan.cc_spring.repository.PatientRepository;
+import fr.dawan.cc_spring.repository.UtilisateurRepository;
 import lombok.RequiredArgsConstructor;
 
 @Component
@@ -26,10 +31,19 @@ public class DataInitializer implements CommandLineRunner {
     private final MedecinRepository medecinRepository;
     private final MedicamentRepository medicamentRepository;
     private final ConsultationRepository consultationRepository;
+    private final UtilisateurRepository utilisateurRepository;
+    private final PasswordEncoder passwordEncoder;
     private final Clock clock;
 
     @Override
     public void run(String... args) {
+        
+        if (utilisateurRepository.count() == 0) {
+            utilisateurRepository.saveAll(List.of(
+                new Utilisateur(null, "admin", passwordEncoder.encode("admin123"), Set.of(Role.ADMIN)),
+                new Utilisateur(null, "medecin", passwordEncoder.encode("medecin123"), Set.of(Role.MEDECIN))));
+        }
+
         if (patientRepository.count() > 0) return;
 
         patientRepository.saveAll(List.of(
