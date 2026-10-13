@@ -8,4 +8,5 @@ import fr.dawan.cc_spring.entity.Consultation;
 
 public interface ConsultationRepository extends MongoRepository<Consultation, String>{
     Page<Consultation> findByPatientNumSS(String numSS, Pageable pageable);
+    Page<Consultation> findByMedecinMatricule(String matricule, Pageable pageable);
 }

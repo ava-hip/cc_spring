@@ -131,4 +131,13 @@ class ConsultationServiceTest {
         assertThatThrownBy(() -> service.modifierPrescriptions("C1", prescriptions))
                 .isInstanceOf(RessourceIntrouvableException.class);
     }
+
+    @Test
+    void listerParMedecin_medecinInconnu_leveException() {
+        when(medecinRepository.existsById("X")).thenReturn(false);
+        Pageable pageable = PageRequest.of(0, 20);
+
+        assertThatThrownBy(() -> service.listerParMedecin("X", pageable))
+                .isInstanceOf(RessourceIntrouvableException.class);
+    }
 }

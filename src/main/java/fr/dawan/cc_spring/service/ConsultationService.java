@@ -115,4 +115,9 @@ public class ConsultationService {
             throw new RessourceIntrouvableException("Médicament(s) introuvable(s) : " + inconnus);
         }
     }
+
+    public PageResponse<ConsultationDto> listerParMedecin(String matricule, Pageable pageable) {
+        verifierMedecin(matricule);
+        return mapper.mapPage(consultationRepository.findByMedecinMatricule(matricule, pageable), ConsultationDto.class);
+    }
 }
